@@ -3,6 +3,11 @@
         <title>LoginApp</title>
     </head>
     <body>
+        {% extends 'base.html' %}
+        
+        {% block title %}LoginApp{% endblock %}
+        
+        {% block content %}
         <h2>EmployeeLogin</h2>
         <form method="post">
             {% csrf_token %}
@@ -14,4 +19,5 @@
         </form>
         <p style="color:red">{{error}}</p>
     </body>
+{% endblock %}
 </html>

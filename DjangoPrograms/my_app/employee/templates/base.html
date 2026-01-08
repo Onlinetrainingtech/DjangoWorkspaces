@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>{% block title %}Employee App {% endblock %}</title>
+        <style>
+            nav {
+                background-color: #f58181;
+                padding: 10px;
+            }
+            nav a {
+                margin-right: 15px;
+                text-decoration: none;
+                color: #333;
+            }
+            nav a:hover {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about/">About</a>
+            <a href="/login/">Login</a>
+            <a href="/contact/">Contact</a>
+            <a href="/register/">Register</a>
+
+        </nav>
+        <hr>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
