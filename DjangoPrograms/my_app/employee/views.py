@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from .forms import EmployeeForm
+from .models import Employee
+
 def home(request):
     # return HttpResponse("welcome to the Application")
     return render(request, 'home.html')
@@ -31,4 +33,7 @@ def login_view(request):
     return render(request, 'login.html')
 def register_view(request):
     return render(request, 'register.html')
+def view_detail(request):
+    employees = Employee.objects.all()
+    return render(request, 'viewdetail.html', {'employees': employees})
 
