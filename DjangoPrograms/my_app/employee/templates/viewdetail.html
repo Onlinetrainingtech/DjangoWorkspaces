@@ -7,12 +7,16 @@
         <th>Name</th>
         <th>Email</th>
         <th>Salary</th>
+        <th>Actions</th>
     </tr>
     {% for emp in employees %}
     <tr>
         <td>{{ emp.name }}</td>
         <td>{{ emp.email }}</td>
         <td>{{ emp.salary }}</td>
+        <td>
+            <a href="{% url 'edit_employee' emp.id %}">Edit</a> |
+            <a href="{% url 'delete_employee' emp.id %}">Delete</a>
     </tr>
     {% empty %}
     <tr>

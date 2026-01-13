@@ -37,3 +37,25 @@ def view_detail(request):
     employees = Employee.objects.all()
     return render(request, 'viewdetail.html', {'employees': employees})
 
+def edit_employee(request, id):
+    # Fetches the employee record using the given id.
+     #If the employee does not exist, Django automatically shows a 404 error page.
+    employee = get_object_or_404(Employee, id=id)
+    #Checks whether the form is submitted.
+    #POST means the user clicked the Update/Submit button.
+    if request.method == 'POST':
+        #request.POST → data entered by the user.
+        #instance=employee → tells Django to update this employee, not create a new one.
+        form = EmployeeForm(request.POST, instance=employee)
+        if form.is_valid():
+            form.save()
+            #Redirects to the employee list/details page after update.
+            return redirect('view_detail')
+    else:
+        form = EmployeeForm(instance=employee)
+    return render(request, 'contact.html', {'form': form})
+
+def delete_employee(request,id):
+    employee = get_object_or_404(Employee, id=id)
+    employee.delete()
+    return redirect('view_detail')
